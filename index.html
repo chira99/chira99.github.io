@@ -29,7 +29,7 @@
         .project-item {
             margin-bottom: 1em;
         }
-        .contact {
+        .contact, .map {
             text-align: center;
             margin: 2em 0;
         }
@@ -40,6 +40,12 @@
         }
         .contact a:hover {
             text-decoration: underline;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -71,6 +77,11 @@
         </div>
         <!-- Add more projects as needed -->
     </section>
+
+    <section class="map">
+        <h2>My Location</h2>
+        <div id="map"></div>
+    </section>
 </div>
 
 <div class="contact">
@@ -80,5 +91,19 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+<script>
+    function initMap() {
+        var location = { lat: 6.9271, lng: 79.8612 }; // Replace with your desired coordinates
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+</script>
 </body>
 </html>
